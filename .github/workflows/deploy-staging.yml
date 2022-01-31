@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Compile code
+        run: ./gradlew clean build --build-cache
       - id: auth
         uses: google-github-actions/auth@v0
         with:
