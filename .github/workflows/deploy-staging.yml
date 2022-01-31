@@ -14,9 +14,6 @@ jobs:
         uses: google-github-actions/auth@v0
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-      # Setup gcloud CLI
-      - name: Setup GCP Service Account
-        uses: google-github-actions/deploy-cloudrun@v0
 
       # Configure Docker with Credentials
       - name: Configure Docker
