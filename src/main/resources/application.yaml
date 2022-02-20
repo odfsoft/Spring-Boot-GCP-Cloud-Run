@@ -1,6 +1,9 @@
 spring:
     application:
         name: sample-application
+    profiles:
+        active: ${ENVIRONMENT:local}
 
 server:
     port: 8080
+
