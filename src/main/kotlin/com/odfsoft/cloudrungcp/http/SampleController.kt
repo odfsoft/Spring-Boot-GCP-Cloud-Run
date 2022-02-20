@@ -1,5 +1,6 @@
 package com.odfsoft.cloudrungcp.http
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -10,13 +11,18 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/message/")
-class KafkaController {
+class KafkaController(
+    @Value("\${application.profiles.active}")
+    private val environment: String,
+)
+{
 
     @PostMapping("/{message}")
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     suspend fun sendMessage(@PathVariable message: String): Response {
-        println("message from api: $message")
-        return Response(message)
+        val messageResponse = "message from api: $message and env [$environment]"
+        println(messageResponse)
+        return Response(messageResponse)
     }
 }
 
