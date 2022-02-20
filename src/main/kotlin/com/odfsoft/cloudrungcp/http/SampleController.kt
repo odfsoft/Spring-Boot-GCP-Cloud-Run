@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/message/")
-class KafkaController(
-    @Value("\${application.profiles.active}")
+class SampleController(
+    @Value("\${spring.profiles.active}")
     private val environment: String,
 )
 {
